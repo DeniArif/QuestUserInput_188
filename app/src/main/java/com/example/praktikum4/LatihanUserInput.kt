@@ -63,13 +63,20 @@ fun LatihanUserInput(modifier: Modifier = Modifier) {
                 Text("Masukkan Nama Anda")
             }
         )
-        Row {
+        Row (modifier = Modifier.padding(5.dp),
+            verticalAlignment = Alignment.CenterVertically)
+        {
             dataJK.forEach{selectedJK ->
-            Row {
-                RadioButton(selected = jenisK == selectedJK,
-                    onClick = {
+                Row (
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier
+                        .padding(5.dp))
+                {
+                    RadioButton(selected = jenisK == selectedJK,
+                        onClick = {
                         jenisK = selectedJK
                     })
+                Text(selectedJK)
             }}
         }
         TextField(
@@ -141,11 +148,14 @@ fun LatihanUserInput(modifier: Modifier = Modifier) {
 fun TampilData(
     judul : String,
     Isinya : String
-){
-    Row(modifier = Modifier.fillMaxWidth()
-        .padding(16.dp),
-        horizontalArrangement = Arrangement.SpaceBetween) {
+) {
+    Row(
+        modifier = Modifier.fillMaxWidth()
+            .padding(16.dp),
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
         Text(judul, modifier = Modifier.weight(0.8f))
         Text(" : ", modifier = Modifier.weight(0.8f))
-        Text(isinya, modifier = Modifier.weight(2f))
+        Text(Isinya, modifier = Modifier.weight(2f))
     }
+}
